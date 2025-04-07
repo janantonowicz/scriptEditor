@@ -101,6 +101,7 @@ extension ContentView {
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
             
+            // error messages are displayed here
             if vm.messages != "" {
                 VStack {
                     ScrollView {
@@ -113,6 +114,8 @@ extension ContentView {
                 }
                 .frame(maxHeight: 150)
             }
+            
+            // exit code message is displayed after the script finishes running
             if vm.exitCodeMessage != "" {
                 Text(vm.exitCodeMessage)
                     .padding(.horizontal)

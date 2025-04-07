@@ -128,19 +128,20 @@ extension CodeEditor {
                 return true
             }
 
-            let nsText = textView.string as NSString
-            let loc = affectedCharRange.location
+            let plainText = textView.string as NSString
+            let location = affectedCharRange.location
 
-            if loc == 0 {
+            if location == 0 {
                 return true
             }
 
-            let previousChar = nsText.substring(with: NSRange(location: loc - 1, length: 1))
+            let previousChar = plainText.substring(with: NSRange(location: location - 1, length: 1))
 
+            // if previous character before break line was { there will be a indentation added to the next line
             if previousChar == "{" {
 
-                let lineRange = nsText.lineRange(for: NSRange(location: loc - 1, length: 0))
-                let currentLine = nsText.substring(with: lineRange)
+                let lineRange = plainText.lineRange(for: NSRange(location: location - 1, length: 0))
+                let currentLine = plainText.substring(with: lineRange)
                 
                 let whitespacePrefix = currentLine.prefix { $0 == " " || $0 == "\t" }
                 

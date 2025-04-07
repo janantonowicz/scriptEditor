@@ -13,5 +13,8 @@ struct scriptInputApp: App {
         WindowGroup {
             ContentView()
         }
+        Settings {
+            KeywordsSettingsView()
+        }
     }
 }
