@@ -21,13 +21,7 @@ class ViewModel: ObservableObject {
     public var isProcessRuning: Bool {
         return process != nil
     }
-    
-    /*
-    func isProcessRunning() -> Bool {
-        return process != nil
-    }
-     */
-    
+        
     /// This function runs swift script from the provided path
     func runScript(path: String) {
         solution = ""
@@ -67,7 +61,7 @@ class ViewModel: ObservableObject {
         }
     }
     
-    
+    /// This function reads data from Pipe and updates user interface
     private func readFromPipe(_ pipe: Pipe, isError: Bool = false) {
         pipe.fileHandleForReading.readabilityHandler = { handle in
             let data = handle.availableData
@@ -83,22 +77,19 @@ class ViewModel: ObservableObject {
         }
     }
     
-    
+    /// This function saves fileContent into provided path
     func writeFile(path: String, fileContent: String) {
         let fileURL = URL(filePath: path)
         
         do {
-            let cleanCode = fileContent
-                //.replacingOccurrences(of: "“", with: "\"") // no longer required since i use custom textEditor
-                //.replacingOccurrences(of: "”", with: "\"")
-                //.replacingOccurrences(of: ":", with: ":")
-            try cleanCode.write(to: fileURL, atomically: true, encoding: .utf8)
+            try fileContent.write(to: fileURL, atomically: true, encoding: .utf8)
             print("File written succesfully to \(path)")
         } catch let error {
             print("Error writing file: \(error)")
         }
     }
     
+    /// This function terminates process and sets default values
     func terminateProcess() {
         process?.terminate()
         process = nil

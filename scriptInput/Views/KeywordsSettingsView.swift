@@ -33,6 +33,7 @@ struct KeywordsSettingsView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 
                 Button("Add") {
+                    guard !newKeyword.isEmpty else { return }
                     manager.add(keyword: newKeyword)
                     newKeyword = ""
                 }
@@ -46,8 +47,6 @@ struct KeywordsSettingsView: View {
     }
 }
 
-struct KeywordsSettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        KeywordsSettingsView()
-    }
+#Preview {
+    KeywordsSettingsView()
 }
