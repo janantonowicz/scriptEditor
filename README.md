@@ -1,6 +1,11 @@
 # Simple script editor for scripts writen in Swift language
 ## With ability to run them and see the output
 
+## How to run
+Project can be run by clonning main branch from this respository and opening it in XCode.
+Requires MacOs 15 or higher.
+
+## About
 After launching the application user can see two pannels side by side:
 The left one is mainly a TextEditor with, 
 a run / stop button 
